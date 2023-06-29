@@ -127,10 +127,10 @@ public class Credencial implements Serializable {
 //</editor-fold>
     
     public enum TipoCliente {
-        CLIENTE("Cliente"),
-        GERENTE("Gerente"),
-        NUTRICIONISTA("Nutricionista"),
-        CAIXA("Caixa");
+        CLIENTE("CLIENTE"),
+        GERENTE("GERENTE"),
+        NUTRICIONISTA("NUTRICIONISTA"),
+        CAIXA("CAIXA");
 
         private String rotulo;
 
