@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+    lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Login</title>
+        <h:outputStylesheet name="css/cssLogin.css"/>
+        <style>
+            body {
+                background-image: url(#{resource['login.jpg']});
+            }
+        </style>
+    </h:head>
+    <h:body>
+
+        <div class="main">
+            <p:messages id="messages" globalOnly="true"/>
+            <div class="left-main">
+                <!-- <h1>Digite Seu Número de Telefone<br/><br/> Para Gerar o QR Code</h1> -->
+                <!--<img src="img/Investment-data-amico.png" class="left-login-image"/>-->
+                <!--<h:graphicImage class="left-main-image" name="img/Investment data-amico.png"/>-->
+            </div>
+            <div class="right-main">
+                <!--<div class="card-main">-->
+                <h:form class="card-main">
+                    <h1>LOGIN</h1>
+                    <h:panelGroup class="textfield">
+                        <p:outputLabel>Email</p:outputLabel>
+                        &nbsp;
+                        <p:inputText id="keyword" placeholder="Email" value="#{controladorLogin.email}"/>
+
+                        <p:outputLabel>Senha</p:outputLabel>
+                        &nbsp;
+                        <p:password id="password"  placeholder="Senha" value="#{controladorLogin.senha}"/>
+                    </h:panelGroup>  
+                    <h:commandButton class="btn-gerar"
+                                     id="submit"
+                                     value="Entrar"
+                                     action="#{controladorLogin.execute()}"
+                                     p:update="@form"
+                                     p:ajax="false"
+                                     style="centro"/>
+                </h:form>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--        <p:outputPanel>
+                    <div>
+                        <div/>
+                        <div>
+                            <h3 style="text-align: center;">Login with your credentials</h3>
+                            <h:form id="login">
+                                <p:messages id="messages" globalOnly="true"/>
+                                <h:panelGrid columns="3" cellpadding="3" style="margin: 0 auto;">
+                                    <p:outputLabel for="email" value="Email"/>
+                                    <p:inputText id="email" value="{controladorLogin.email}"/>
+                                    <p:message for="email"/>
+        
+                                    <p:outputLabel for="senha" value="Senha"/>
+                                    <p:inputText id="senha" value="{controladorLogin.senha}" type="senha"/>
+                                    <p:message for="senha"/>
+        
+                                    <p:commandButton 
+                                        id="submit" 
+                                        update="@form" 
+                                        value="Login" 
+                                        action="{controladorLogin.execute()}" 
+                                        ajax="false"/>
+                                </h:panelGrid>
+                            </h:form>
+                        </div>   
+                    </div>
+                </p:outputPanel>-->
+    </h:body>
+
+</html>
+

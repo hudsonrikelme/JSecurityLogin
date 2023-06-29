@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/cssLogin.css"/>
+    </h:head>
+    <h:body>
+        <div class="main">
+            <p:messages id="messages" globalOnly="true"/>
+            <div class="left-main">
+            </div>
+            <div class="right-main">
+                <!--<div class="card-main">-->
+                <h:form class="card-main">
+                    <h1>CADASTRE-SE</h1>
+                    <h:panelGroup class="textfield">
+                        <p:outputLabel>Nome</p:outputLabel>
+                        <!--                        &nbsp;-->
+                        <p:inputText id="nome" placeholder="Nome" value="#{controladorNovaCredencial.cliente.nome}"/>
+
+                        <p:outputLabel>Email</p:outputLabel>
+
+                        <p:inputText id="keyword" placeholder="Email" value="#{controladorNovaCredencial.credencial.email}"/>
+
+                        <p:outputLabel>CPF</p:outputLabel>
+
+                        <p:inputText id="cpf" placeholder="CPF" value="#{controladorNovaCredencial.cliente.cpf}"/>
+
+                        <p:outputLabel>Senha</p:outputLabel>
+
+                        <p:password id="password"  placeholder="Senha" value="#{controladorNovaCredencial.credencial.senha}"/>
+                    </h:panelGroup>  
+                    <h:commandButton class="btn-gerar"
+                                     id="submit"
+                                     value="Cadastrar"
+                                     action="#{controladorNovaCredencial.save()}"
+                                     p:update="@form"
+                                     p:ajax="false"
+                                     style="centro"/>
+                </h:form>
+                <p:messages 
+                    for="Número Captcha"/>
+                <!--                <p:blockUI block="qrform"
+                                           trigger="generateQrCode"/>-->
+
+                <!--</div>-->
+            </div>
+        </div>
+
+    </h:body>
+</html>

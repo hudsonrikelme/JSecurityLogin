@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    <context-param>
+        <!-- Comentarios nas páginas-->
+        <param-name>javax.faces.
+            FACELETS_SKIP_COMMENTS</param-name>
+            <param-value>true</param-value>
+    </context-param>
+<!--    <context-param>
+        <param-name>javax.faces.WEBAPP_RESOURCES_DIRECTORY</param-name>
+        <param-value>/WEB-INF/resources</param-value>
+    </context-param>-->
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Jakarta Security -->
+    <security-role>
+        <description>System administrator</description>
+        <role-name>GERENTE</role-name>
+    </security-role>
+    
+    <security-role>
+        <description>Common authenticated user</description>
+        <role-name>CLIENTE</role-name>
+    </security-role>
+    
+    <security-role>
+        <description>Nutritionist</description>
+        <role-name>NUTRICIONISTA</role-name>
+    </security-role>
+    
+    <security-role>
+        <description>Cash Manager</description>
+        <role-name>CAIXA</role-name>
+    </security-role>
+    
+    <security-constraint>
+        <display-name>Gerente Role</display-name>
+        <web-resource-collection>
+            <web-resource-name>All App Pages</web-resource-name>
+            <url-pattern>/app/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>GERENTE</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <display-name>User Role</display-name>
+        <web-resource-collection>
+            <web-resource-name>Profile Page</web-resource-name>
+            <url-pattern>/app/index.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>GERENTE</role-name>
+            <role-name>CLIENTE</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <display-name>Nutricionista Role</display-name>
+        <web-resource-collection>
+            <web-resource-name>Profile Page</web-resource-name>
+            <url-pattern>/app/index.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>GERENTE</role-name>
+            <role-name>NUTRICIONISTA</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <display-name>Caixa Role</display-name>
+        <web-resource-collection>
+            <web-resource-name>Profile Page</web-resource-name>
+            <url-pattern>/app/index.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>GERENTE</role-name>
+            <role-name>CAIXA</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+<!--        <welcome-file>index.xhtml</welcome-file>-->
+        <welcome-file>login.xhtml</welcome-file>
+    </welcome-file-list>
+    
+    
+    <!-- Página de Erro 403 - Restrição de acesso
+    <error-page>
+        <error-code>403</error-code>
+        <location>/WEB-INF/templates/forbiden.xhtml</location>
+    </error-page>
+    -->
+</web-app>
